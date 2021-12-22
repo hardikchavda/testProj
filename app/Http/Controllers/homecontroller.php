@@ -8,7 +8,11 @@ class homecontroller extends Controller
 {
     function home()
     {
-        return view("home");
+        $name = "Hardik Chavda";
+        $address = "Rajkot";
+        return view("home")
+            ->withData($name)
+            ->withAddress($address);
     }
     function getAllData($name, $rno)
     {
