@@ -17,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/DEF', function () {
-    return view('about');
-})->name('about');
+Route::get('/', 'homecontroller@home')->name('home');
+Route::get('/about', 'homecontroller@about')->name('about');
+
+
 Route::prefix('admin')->group(function () {
     // Route::get('/users', function () {
     //     return view('about');
