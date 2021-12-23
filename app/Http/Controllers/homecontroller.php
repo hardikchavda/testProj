@@ -10,9 +10,17 @@ class homecontroller extends Controller
     {
         $name = "Hardik Chavda";
         $address = "Rajkot";
-        return view("home")
-            ->withData($name)
-            ->withAddress($address);
+        $script = "<H1>hELLO</H1>";
+        $data =  [
+            'name' => $name,
+            'address' => $address
+        ];
+
+        $data1 = "red";
+        // return view("home")
+        //     ->withData($name)
+        //     ->withAddress($address);
+        return view("home", compact('data', 'data1', 'script'));
     }
     function getAllData($name, $rno)
     {

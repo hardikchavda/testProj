@@ -8,8 +8,11 @@
 @section('mainbody')
     <!-- Banner -->
     <section id="banner">
-        <h2>Hi. You're looking at <strong> {{ $data }}</strong>.
-            and Lives in {{ $address }}
+        {{-- xss ATTACKS --}}
+        <h2 style="background: {{ $data1 }}">Hi. You're looking at <strong> {{ $data['name'] }}</strong>.
+            and Lives in {{ isset($data['address']) ? $data['address'] : 'address' }}
+
+            {!! $script !!}
         </h2>
         <header>
             <p>
