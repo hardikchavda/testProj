@@ -10,17 +10,27 @@ class homecontroller extends Controller
     {
         $name = "Hardik Chavda";
         $address = "Rajkot";
-        $script = "<H1>hELLO</H1>";
+        $script = "<h2>Hello With Tags</h2>";
         $data =  [
             'name' => $name,
             'address' => $address
+        ];
+        $users = [
+            [
+                'id' => 1,
+                'name' =>  'User1'
+            ],
+            [
+                'id' => 2,
+                'name' =>  'User2'
+            ]
         ];
 
         $data1 = "red";
         // return view("home")
         //     ->withData($name)
         //     ->withAddress($address);
-        return view("home", compact('data', 'data1', 'script'));
+        return view("home", compact('data', 'data1', 'script', 'users'));
     }
     function getAllData($name, $rno)
     {

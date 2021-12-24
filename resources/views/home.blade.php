@@ -13,6 +13,24 @@
             and Lives in {{ isset($data['address']) ? $data['address'] : 'address' }}
 
             {!! $script !!}
+            {{-- Blade Conditions --}}
+            @if (!$script)
+                <p>Yes it is available</p>
+            @else
+                <p>It is not available</p>
+            @endif
+
+            @unless(!$script)
+                <h3>Hello it is unlsess</h3>
+            @endunless
+            {{-- Blade Loops --}}
+            @for ($i = 0; $i < 10; $i++)
+                The current value is {{ $i }} <br>
+            @endfor
+            @foreach ($users as $user)
+                <p>This is user {{ $user['id'] }}</p>
+            @endforeach
+
         </h2>
         <header>
             <p>
