@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class homecontroller extends Controller
 {
     function home()
     {
+        // Simple Way for CRUD
+        // $dataTable  = DB::select('select * from user_info');
+        // DB::insert('insert into user_info (address, age,contact) values("Surat",20,"5656566")');
+
+
         $name = "Hardik Chavda";
         $address = "Rajkot";
         $script = "<h2>Hello With Tags</h2>";
@@ -30,7 +36,7 @@ class homecontroller extends Controller
         // return view("home")
         //     ->withData($name)
         //     ->withAddress($address);
-        return view("home", compact('data', 'data1', 'script', 'users'));
+        return view("home", compact('data', 'data1', 'script', 'users', 'dataTable'));
     }
     function getAllData($name, $rno)
     {

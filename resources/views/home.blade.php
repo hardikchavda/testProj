@@ -31,6 +31,38 @@
                 <p>This is user {{ $user['id'] }}</p>
             @endforeach
 
+            <table>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        Age
+                    </td>
+                    <td>
+                        Contact
+                    </td>
+                </tr>
+                @forelse ($dataTable as $data )
+                    <tr>
+                        <td>
+                            {{ $data->address }}
+                        </td>
+                        <td>
+                            {{ $data->age }}
+                        </td>
+                        <td>
+                            {{ $data->contact }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td>
+                            Arrays is Empty
+                        </td>
+                    </tr>
+                @endforelse
+            </table>
         </h2>
         <header>
             <p>
