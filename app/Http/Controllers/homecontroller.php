@@ -4,15 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\userInfo;
 
 class homecontroller extends Controller
 {
     function home()
     {
         // Simple Way for CRUD
+
         // $dataTable  = DB::select('select * from user_info');
         // DB::insert('insert into user_info (address, age,contact) values("Surat",20,"5656566")');
 
+        // $dataTable  = DB::table('user_info')
+        //     ->where('address', 'Surat')
+        //     //->get()
+        //     ->first();
+        //dd($dataTable);
+
+        $dataTable = userInfo::all();
+        dd($dataTable);
 
         $name = "Hardik Chavda";
         $address = "Rajkot";
