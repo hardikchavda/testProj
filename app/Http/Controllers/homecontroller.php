@@ -22,7 +22,8 @@ class homecontroller extends Controller
         //dd($dataTable);
 
         $dataTable = userInfo::all();
-        dd($dataTable);
+        //$dataTable->all();
+        //dd($dataTable);
 
         $name = "Hardik Chavda";
         $address = "Rajkot";
