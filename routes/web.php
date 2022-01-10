@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,14 @@ Route::get('/about', 'homecontroller@about')->name('about');
 
 
 Route::prefix('admin')->group(function () {
-    // Route::get('/users', function () {
-    //     return view('about');
-    // });
-    // Route::get('/login', function () {
-    //     return view('about');
-    // });
-    // Route::get('/logout', function () {
-    //     return view('about');
-    // });
+    Route::get('/', 'adminController@index')->name('adminHome');
+    Route::get('/addUser', 'adminController@addUser')->name('addUser');
+    Route::get('/login', function () {
+        return view('about');
+    });
+    Route::get('/logout', function () {
+        return view('about');
+    });
 });
 
 
