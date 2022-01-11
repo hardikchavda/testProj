@@ -25,6 +25,8 @@ Route::get('/about', 'homecontroller@about')->name('about');
 Route::prefix('admin')->group(function () {
     Route::get('/', 'adminController@index')->name('adminHome');
     Route::get('/addUser', 'adminController@addUser')->name('addUser');
+    Route::post('/saveUser', 'adminController@saveUser')->name('saveUser');
+
     Route::get('/login', function () {
         return view('about');
     });
