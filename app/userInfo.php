@@ -10,5 +10,5 @@ class userInfo extends Model
     //protected $primaryKey = "clg_id";
     //protected $fillable = ['age', 'contact', 'address'];
     protected $guarded = [];
-    public $timestamps = false;
+    // public $timestamps = false;
 }

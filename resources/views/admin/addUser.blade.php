@@ -24,34 +24,104 @@
             <div class="container-fluid">
                 <!-- Main row -->
                 <div class="row">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="{{ route('saveUser') }}" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <textarea name="address" id="address" cols="30" rows="3" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="age">Age</label>
-                                    <input type="text" class="form-control" id="age" placeholder="Age" name="age">
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact">File input</label>
-                                    <input type="number" class="form-control" id="contact" name="contact">
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
+                    <div class="col-md-4">
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Example</h3>
                             </div>
-                        </form>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form action="{{ route('saveUser') }}" method="POST">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <textarea name="address" id="address" cols="30" rows="3"
+                                            class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input type="text" class="form-control" id="age" placeholder="Age" name="age">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact">Contact Number</label>
+                                        <input type="number" class="form-control" id="contact" name="contact">
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+
+
+                                @if (session('success'))
+                                    {{ session('success') }}
+                                @else
+                                    Nothing
+                                @endif
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">UserInfo Data</h3>
+                            </div>
+                            <table class="table" id="userTable">
+                                <tr>
+                                    <th>
+                                        Address
+                                    </th>
+                                    <th>
+                                        Age
+                                    </th>
+                                    <th>
+                                        Contact
+                                    </th>
+                                    <th>
+                                        Creation
+                                    </th>
+                                    <th>
+                                        Updation
+                                    </th>
+                                    <th>
+                                        Modify
+                                    </th>
+                                </tr>
+
+                                @forelse ($data as $user)
+                                    <tr>
+                                        <td>
+                                            {{ $user->address }}
+                                        </td>
+                                        <td>
+                                            {{ $user->age }}
+                                        </td>
+                                        <td>
+                                            {{ $user->contact }}
+                                        </td>
+                                        <td>
+                                            {{ $user->created_at }}
+                                        </td>
+                                        <td>
+                                            {{ $user->updated_at }}
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-small btn-primary">Edit</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    Data no available
+                                @endforelse
+
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row (main row) -->
