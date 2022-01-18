@@ -33,27 +33,32 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('saveUser') }}" method="POST">
+
+                            <form action="{{ url('admin/saveeditUser/' . $data['id']) }}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <textarea name="address" id="address" cols="30" rows="3"
-                                            class="form-control"></textarea>
+                                            class="form-control">{{ $data['address'] }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="age">Age</label>
-                                        <input type="text" class="form-control" id="age" placeholder="Age" name="age">
+                                        <input type="text" class="form-control" id="age" placeholder="Age" name="age"
+                                            value="{{ $data['age'] }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="contact">Contact Number</label>
-                                        <input type="number" class="form-control" id="contact" name="contact">
+                                        <input type="number" class="form-control" id="contact" name="contact"
+                                            value="{{ $data['contact'] }}">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{ url('admin/deleteUser/' . $data['id']) }}" class="btn btn-primary btn-danger">Delete</a>
+
                                 </div>
 
 
@@ -67,7 +72,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    {{-- <div class="col-md-8">
 
                         <div class="card card-primary">
                             <div class="card-header">
@@ -113,8 +118,7 @@
                                             {{ $user->updated_at }}
                                         </td>
                                         <td>
-                                            <a href="{{ url('admin/editUser/' . $user->id) }}"
-                                                class="btn btn-small btn-primary">Edit</a>
+                                            <a href="" class="btn btn-small btn-primary">Edit</a>
                                         </td>
                                     </tr>
                                 @empty
@@ -123,7 +127,7 @@
 
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->

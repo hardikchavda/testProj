@@ -17,10 +17,31 @@ class adminController extends Controller
         $data = userInfo::all();
         return view('admin.addUser', compact('data'));
     }
+    public function editUser($id)
+    {
+        $data =  userInfo::findorFail($id);
+        //dd($data);
+        return view('admin.editUser', compact('data'));
+    }
     public function saveUser(Request $req)
     {
         $data = new userInfo();
         $data::create($req->all());
         return redirect()->back()->with('success', 'success');
+    }
+    public function saveeditUser(Request $req, $id)
+    {
+        $data = userInfo::find($id);
+        $data->address = $req->address;
+        $data->age = $req->age;
+        $data->contact = $req->contact;
+        $data->update();
+        return redirect()->back()->with('success', 'update success');
+    }
+    public function deleteUser($id)
+    {
+        $data = userInfo::find($id);
+        $data->delete();
+        return redirect('admin/addUser')->with('success', 'delete success');
     }
 }

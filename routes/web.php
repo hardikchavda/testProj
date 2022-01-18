@@ -28,6 +28,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/addUser', 'adminController@addUser')->name('addUser');
     Route::post('/saveUser', 'adminController@saveUser')->name('saveUser');
 
+    Route::get('/editUser/{id}', 'adminController@editUser')->name('editUser');
+    Route::post('/saveeditUser/{id}', 'adminController@saveeditUser')->name('saveeditUser');
+    Route::get('/deleteUser/{id}', 'adminController@deleteUser')->name('deleteUser');
+
     Route::get('/login', function () {
         return view('about');
     });
