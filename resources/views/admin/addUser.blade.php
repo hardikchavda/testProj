@@ -33,21 +33,31 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="{{ route('saveUser') }}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <textarea name="address" id="address" cols="30" rows="3"
-                                            class="form-control"></textarea>
+                                            class="form-control">{{ old('address') }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="age">Age</label>
-                                        <input type="text" class="form-control" id="age" placeholder="Age" name="age">
+                                        <input type="text" class="form-control" id="age" placeholder="Age" name="age"
+                                            value="{{ old('age') }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="contact">Contact Number</label>
-                                        <input type="number" class="form-control" id="contact" name="contact">
+                                        <input type="number" class="form-control" id="contact" name="contact" value="{{old('contact')}}">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -73,6 +83,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">UserInfo Data</h3>
                             </div>
+
                             <table class="table" id="userTable">
                                 <tr>
                                     <th>

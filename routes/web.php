@@ -21,22 +21,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'homecontroller@home')->name('home');
 Route::get('/about', 'homecontroller@about')->name('about');
 
+Route::get('/login', 'adminController@login')->name('login');
+Route::get('/logout', 'adminController@logout')->name('logout');
+Route::post('/loginUser', 'adminController@loginUser')->name('loginUser');
+Route::post('/saveUserAdmin', 'adminController@saveUserAdmin')->name('saveUserAdmin');
+Route::get('/register', 'adminController@register')->name('register');
+
+
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', 'adminController@index')->name('adminHome');
 
-    Route::get('/addUser', 'adminController@addUser')->name('addUser');
-    Route::post('/saveUser', 'adminController@saveUser')->name('saveUser');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', 'adminController@index')->name('adminHome');
 
-    Route::get('/editUser/{id}', 'adminController@editUser')->name('editUser');
-    Route::post('/saveeditUser/{id}', 'adminController@saveeditUser')->name('saveeditUser');
-    Route::get('/deleteUser/{id}', 'adminController@deleteUser')->name('deleteUser');
+        Route::get('/addUser', 'adminController@addUser')->name('addUser');
+        Route::post('/saveUser', 'adminController@saveUser')->name('saveUser');
 
-    Route::get('/login', function () {
-        return view('about');
-    });
-    Route::get('/logout', function () {
-        return view('about');
+        Route::get('/editUser/{id}', 'adminController@editUser')->name('editUser');
+        Route::post('/saveeditUser/{id}', 'adminController@saveeditUser')->name('saveeditUser');
+        Route::get('/deleteUser/{id}', 'adminController@deleteUser')->name('deleteUser');
+
     });
 });
 
