@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="contact">Contact Number</label>
-                                        <input type="number" class="form-control" id="contact" name="contact"
+                                        <input type="text" class="form-control" id="contact" name="contact"
                                             value="{{ $data['contact'] }}">
                                     </div>
                                 </div>
